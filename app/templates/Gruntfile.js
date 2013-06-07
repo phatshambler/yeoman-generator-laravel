@@ -44,7 +44,9 @@ module.exports = function (grunt) {
             all: [
                 'Gruntfile.js',
                 '<%%= yeoman.public %>/js/{,*/}*.js',
-                '!<%%= yeoman.public %>/js/vendor/*'
+                '!<%%= yeoman.public %>/js/vendor/*',
+                '!<%= yeoman.public %>/js/components/*',
+                '!<%= yeoman.public %>/js/main-build.js'
             ]
         },
         compass: {

@@ -95,11 +95,11 @@ AppGenerator.prototype.mainSCSS = function mainSCSS() {
 };
 
 AppGenerator.prototype.misc = function misc() {
-    this.copy('_gitignore','.gitignore');
-    this.copy('_gitattributes','.gitattributes');
-    this.copy('_editorconfig','.editorconfig');
-    this.copy('_jshintrc','.jshintrc');
-    this.copy('_bowerrc','.bowerrc');
+    this.copy('gitignore','.gitignore');
+    this.copy('gitattributes','.gitattributes');
+    this.copy('editorconfig','.editorconfig');
+    this.copy('jshintrc','.jshintrc');
+    this.copy('bowerrc','.bowerrc');
 };
 
 
