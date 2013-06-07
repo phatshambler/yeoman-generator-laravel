@@ -1,10 +1,12 @@
 # Laravel generator
 
-Yeoman generator for laravel application
+Custom yeoman generator for laravel4 application
 
 ## Installation
 
-`git clone git://github.com/Folkloreatelier/yeoman-generator-laravel.git`
+Note: Clone this in your global node_modules (if you want it global).
+
+`git clone git://github.com/phatshambler/yeoman-generator-laravel.git`
 
 `cd yeoman-generator-laravel`
 
@@ -12,7 +14,7 @@ Yeoman generator for laravel application
 
 ## Usage
 
-`yo laravel [host]`
+`yo laravel [project_hostname]`
 
 ## Options
 
