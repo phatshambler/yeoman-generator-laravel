@@ -13,13 +13,13 @@ function AppGenerator(args, options, config) {
 
     this.on('end', function () {
         if (options['skip-install']) {
-            console.log('\n\nI\'m all done. Just run ' + 'npm install & bower install --dev & composer install'.bold.yellow + ' to install the required dependencies.\n\n');
+            console.log('\n\nI\'m all done. Don\'t forget to make app/storage writable. Just run ' + 'npm install & bower install --dev & composer install'.bold.yellow + ' to install the required dependencies.\n\n');
         } else {
-            console.log('\n\nI\'m all done. Running ' + 'npm install, bower install and composer install'.bold.yellow + ' for you to install the required dependencies. If this fails, try running the command yourself.\n\n');
+            console.log('\n\nI\'m all done. Don\'t forget to make app/storage writable. Running ' + 'npm install, bower install and composer install'.bold.yellow + ' for you to install the required dependencies. If this fails, try running the command yourself.\n\n');
             spawn(win32 ? 'cmd' : 'npm', [win32 ? '/c npm install' : 'install'], { stdio: 'inherit' });
             spawn(win32 ? 'cmd' : 'bower', [win32 ? '/c bower install' : 'install'], { stdio: 'inherit' });
             spawn(win32 ? 'cmd' : 'composer', [win32 ? '/c composer install' : 'install'], { stdio: 'inherit' });
-            spawn(win32 ? 'cmd' : 'chmod', [win32 ? '' : ' 777 app/storage'], { stdio: 'inherit' });
+            //spawn(win32 ? 'cmd' : 'chmod', [win32 ? '' : ' 777 app/storage'], { stdio: 'inherit' });
         }
     });
 
