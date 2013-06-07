@@ -13,11 +13,13 @@ function AppGenerator(args, options, config) {
 
     this.on('end', function () {
         if (options['skip-install']) {
-            console.log('\n\nI\'m all done. Just run ' + 'npm install & bower install --dev'.bold.yellow + ' to install the required dependencies.\n\n');
+            console.log('\n\nI\'m all done. Just run ' + 'npm install & bower install --dev & composer install'.bold.yellow + ' to install the required dependencies.\n\n');
         } else {
-            console.log('\n\nI\'m all done. Running ' + 'npm install & bower install'.bold.yellow + ' for you to install the required dependencies. If this fails, try running the command yourself.\n\n');
+            console.log('\n\nI\'m all done. Running ' + 'npm install, bower install and composer install'.bold.yellow + ' for you to install the required dependencies. If this fails, try running the command yourself.\n\n');
             spawn(win32 ? 'cmd' : 'npm', [win32 ? '/c npm install' : 'install'], { stdio: 'inherit' });
             spawn(win32 ? 'cmd' : 'bower', [win32 ? '/c bower install' : 'install'], { stdio: 'inherit' });
+            spawn(win32 ? 'cmd' : 'composer', [win32 ? '/c composer install' : 'install'], { stdio: 'inherit' });
+            spawn(win32 ? 'cmd' : 'chmod', [win32 ? '/c' : '777 app/storage'], { stdio: 'inherit' });
         }
     });
 
@@ -78,10 +80,26 @@ AppGenerator.prototype.bowerJSON = function componentJSON() {
     });
 };
 
+AppGenerator.prototype.structure = function structure() {
+      this.mkdir('public/css');
+      this.mkdir('public/img');
+      this.mkdir('public/scss');
+};
+
 AppGenerator.prototype.mainJS = function mainJS() {
     this.copy('main.js','public/js/main.js');
 };
 
-AppGenerator.prototype.structure = function structure() {
-    this.copy('main.js','public/js/main.js');
+AppGenerator.prototype.mainSCSS = function mainSCSS() {
+    this.copy('main.scss','public/scss/main.scss');
 };
+
+AppGenerator.prototype.misc = function misc() {
+    this.copy('_gitignore','.gitignore');
+    this.copy('_gitattributes','.gitattributes');
+    this.copy('_editorconfig','.editorconfig');
+    this.copy('_jshintrc','.jshintrc');
+    this.copy('_bowerrc','.bowerrc');
+};
+
+
