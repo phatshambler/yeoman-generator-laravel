@@ -19,7 +19,7 @@ function AppGenerator(args, options, config) {
             spawn(win32 ? 'cmd' : 'npm', [win32 ? '/c npm install' : 'install'], { stdio: 'inherit' });
             spawn(win32 ? 'cmd' : 'bower', [win32 ? '/c bower install' : 'install'], { stdio: 'inherit' });
             spawn(win32 ? 'cmd' : 'composer', [win32 ? '/c composer install' : 'install'], { stdio: 'inherit' });
-            spawn(win32 ? 'cmd' : 'chmod', [win32 ? '/c' : '777 app/storage'], { stdio: 'inherit' });
+            spawn(win32 ? 'cmd' : 'chmod', [win32 ? '' : ' 777 app/storage'], { stdio: 'inherit' });
         }
     });
 
