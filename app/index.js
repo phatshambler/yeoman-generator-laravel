@@ -56,9 +56,9 @@ AppGenerator.prototype.askFor = function askFor(name) {
     }
 };
 
-/*AppGenerator.prototype.fetchGit = function fetchGit() {
-    this.tarball('http://files.commun.ca/github/laravel.tar.gz', '.', this.async());
-};*/
+AppGenerator.prototype.fetchGit = function fetchGit() {
+    this.tarball('https://github.com/laravel/laravel/tarball/master', '.', this.async());
+};
 
 AppGenerator.prototype.gruntfile = function gruntfile() {
     this.template('Gruntfile.js','Gruntfile.js',{
@@ -79,5 +79,9 @@ AppGenerator.prototype.bowerJSON = function componentJSON() {
 };
 
 AppGenerator.prototype.mainJS = function mainJS() {
+    this.copy('main.js','public/js/main.js');
+};
+
+AppGenerator.prototype.structure = function structure() {
     this.copy('main.js','public/js/main.js');
 };
