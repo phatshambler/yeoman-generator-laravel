@@ -9,7 +9,6 @@ require.config({
 });
 
 require(['jquery','underscore'], function ($,_) {
-
     'use strict';
 
 

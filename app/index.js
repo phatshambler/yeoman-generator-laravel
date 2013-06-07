@@ -57,7 +57,7 @@ AppGenerator.prototype.askFor = function askFor(name) {
 };
 
 AppGenerator.prototype.fetchGit = function fetchGit() {
-    this.tarball('https://github.com/folkloreatelier/yeoman-boilerplate-laravel/tarball/master', '.', this.async());
+    this.tarball('http://files.commun.ca/github/laravel.tar.gz', '.', this.async());
 };
 
 AppGenerator.prototype.gruntfile = function gruntfile() {

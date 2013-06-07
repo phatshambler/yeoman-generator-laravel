@@ -1,7 +1,7 @@
 {
   "name": "generator-laravel",
-  "version": "0.0.1",
-  "description": "Yeoman generator for Laravel",
+  "version": "0.0.2",
+  "description": "Custom Yeoman generator for Laravel4",
   "keywords": [
     "yeoman-generator",
     "laravel"
@@ -19,15 +19,19 @@
     {
       "name": "François Côté",
       "email": "fc@atelierfolklore.ca"
+    },
+    {
+      "name": "Nicolas Roy",
+      "email": "nr@commun.ca"
     }
   ],
-  "homepage": "https://github.com/Folkloreatelier/yeoman-generator-laravel",
-  "bugs": "https://github.com/Folkloreatelier/yeoman-generator-laravel/issues",
+  "homepage": "https://github.com/phatshambler/yeoman-generator-laravel",
+  "bugs": "https://github.com/phatshambler/yeoman-generator-laravel/issues",
 
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Folkloreatelier/yeoman-generator-laravel.git"
+    "url": "git://github.com/phatshambler/yeoman-generator-laravel.git"
   },
   "dependencies": {
     "yeoman-generator": "~0.10.4",

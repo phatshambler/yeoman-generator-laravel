@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         host: '<%= projectHost %>',
-        serverHost: '<%= projectHost %>.local.atelierfolklore.ca',
+        serverHost: '<%= projectHost %>', //Change this to mirror your local server config
         public: 'public',
         application: 'application'
     };
@@ -65,13 +65,13 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     baseUrl: '<%%= yeoman.public %>/js',
-                    name: "main",
-                    out: "<%%= yeoman.public %>/js/main-build.js",
-                    mainConfigFile: "<%%= yeoman.public %>/js/main.js",
+                    name: 'main',
+                    out: '<%%= yeoman.public %>/js/main-build.js',
+                    mainConfigFile: '<%%= yeoman.public %>/js/main.js',
                     paths: {
-                        requireLib: "components/requirejs/require"
+                        requireLib: 'components/requirejs/require'
                     },
-                    include: "requireLib",
+                    include: 'requireLib',
                     preserveLicenseComments: false,
                     useStrict: true,
                     wrap: true
@@ -104,9 +104,9 @@ module.exports = function (grunt) {
         },
         rsync: {
             'dist': {
-                src: "./",
-                dest: "/www/<%%= yeoman.host %>/",
-                host: "www@server1.atelierfolklore.ca",
+                src: './',
+                dest: '/srv/www/<%%= yeoman.host %>/', //Change this
+                host: 'USER@HOST', //Change this
                 recursive: true,
                 syncDest: true
             },
