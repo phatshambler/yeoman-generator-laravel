@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         host: '<%= projectHost %>',
-        serverHost: '<%= projectHost %>', //Change this to mirror your local server config
+        serverHost: '<%= projectHost %>', //Change this to mirror your local server config or localhost:8000 for artisan serve
         public: 'public',
         application: 'application'
     };
