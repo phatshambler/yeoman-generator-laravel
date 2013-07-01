@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                 imagesDir: '<%%= yeoman.public %>/img',
                 javascriptsDir: '<%%= yeoman.public %>/js',
                 fontsDir: '<%%= yeoman.public %>/css/fonts',
-                importPath: '<%%= yeoman.public %>/js/components',
+                importPath: '<%%= yeoman.public %>/components',
                 relativeAssets: false,
                 raw: 'http_images_path = \'../img\'\nhttp_generated_images_path = \'../img\'\n'
             },
