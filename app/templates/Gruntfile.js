@@ -18,8 +18,8 @@ module.exports = function (grunt) {
     var yeomanConfig = {
         host: '<%= projectHost %>',
         serverHost: '<%= projectHost %>', //Change this to mirror your local server config or localhost:8000 for artisan serve
-        public: 'public',
-        application: 'application'
+        files: 'public',
+        application: 'app'
     };
 
     grunt.initConfig({
@@ -28,13 +28,21 @@ module.exports = function (grunt) {
 
         watch: {
             compass: {
-                files: ['<%%= yeoman.public %>/scss/{,*/}*.{scss,sass}'],
+                files: ['<%= yeoman.files %>/scss/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
+            },
+            phpfiles: {
+                files: ['<%= yeoman.application %>/views/*.php','<%= yeoman.application %>/views/**/*.php'],
+                tasks: [],
+            },
+            options: {
+                //keepalive: true,
+                livereload: 8000
             }
         },
         open: {
             server: {
-                path: 'http://<%%= yeoman.serverHost %>'
+                path: 'http://<%= yeoman.serverHost %>'
             }
         },
         jshint: {
@@ -43,8 +51,8 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%%= yeoman.public %>/js/{,*/}*.js',
-                '!<%%= yeoman.public %>/js/vendor/*',
+                '<%= yeoman.public %>/js/{,*/}*.js',
+                '!<%= yeoman.public %>/js/vendor/*',
                 '!<%= yeoman.public %>/js/components/*',
                 '!<%= yeoman.public %>/js/main-build.js'
             ]
@@ -52,12 +60,12 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 require: 'zurb-foundation',
-                sassDir: '<%%= yeoman.public %>/scss',
-                cssDir: '<%%= yeoman.public %>/css',
-                imagesDir: '<%%= yeoman.public %>/img',
-                javascriptsDir: '<%%= yeoman.public %>/js',
-                fontsDir: '<%%= yeoman.public %>/css/fonts',
-                importPath: '<%%= yeoman.public %>/components',
+                sassDir: '<%= yeoman.public %>/scss',
+                cssDir: '<%= yeoman.public %>/css',
+                imagesDir: '<%= yeoman.public %>/img',
+                javascriptsDir: '<%= yeoman.public %>/js',
+                fontsDir: '<%= yeoman.public %>/css/fonts',
+                importPath: '<%= yeoman.public %>/components',
                 relativeAssets: false,
                 raw: 'http_images_path = \'../img\'\nhttp_generated_images_path = \'../img\'\n'
             },
@@ -66,10 +74,10 @@ module.exports = function (grunt) {
         requirejs: {
             dist: {
                 options: {
-                    baseUrl: '<%%= yeoman.public %>/js',
+                    baseUrl: '<%= yeoman.public %>/js',
                     name: 'main',
-                    out: '<%%= yeoman.public %>/js/main-build.js',
-                    mainConfigFile: '<%%= yeoman.public %>/js/main.js',
+                    out: '<%= yeoman.public %>/js/main-build.js',
+                    mainConfigFile: '<%= yeoman.public %>/js/main.js',
                     paths: {
                         requireLib: 'components/requirejs/require'
                     },
@@ -84,24 +92,24 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%%= yeoman.public %>/img',
+                    cwd: '<%= yeoman.public %>/img',
                     src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%%= yeoman.public %>/img'
+                    dest: '<%= yeoman.public %>/img'
                 }]
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    '<%%= yeoman.public %>/css/main.css': [
-                        '<%%= yeoman.public %>/css/{,*/}*.css'
+                    '<%= yeoman.public %>/css/main.css': [
+                        '<%= yeoman.public %>/css/{,*/}*.css'
                     ]
                 }
             }
         },
         bower: {
             all: {
-                rjsConfig: '<%%= yeoman.public %>/js/main.js'
+                rjsConfig: '<%= yeoman.public %>/js/main.js'
             }
         },
         rsync: {
@@ -116,7 +124,7 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.renameTask('regarde', 'watch');
+    //grunt.renameTask('regarde', 'watch');
 
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {

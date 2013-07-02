@@ -19,7 +19,7 @@ function AppGenerator(args, options, config) {
             spawn(win32 ? 'cmd' : 'npm', [win32 ? '/c npm install' : 'install'], { stdio: 'inherit' });
             spawn(win32 ? 'cmd' : 'bower', [win32 ? '/c bower install' : 'install'], { stdio: 'inherit' });
             spawn(win32 ? 'cmd' : 'composer', [win32 ? '/c composer install' : 'install'], { stdio: 'inherit' });
-            //spawn(win32 ? 'cmd' : 'chmod', [win32 ? '' : ' 777 app/storage'], { stdio: 'inherit' });
+            spawn(win32 ? 'cmd' : 'chmod', [win32 ? '' : { '777', 'app/storage' }], { stdio: 'inherit' });
         }
     });
 
@@ -34,13 +34,13 @@ AppGenerator.prototype.askFor = function askFor(name) {
 
     // welcome message
     console.log('\n\n'+this.folklore.green);
-    console.log('Laravel Boilerplate');
+    console.log('Laravel4 Boilerplate');
     console.log('\n\n');
 
     if(!name || !name.length) {
         var prompts = [{
             name: 'projectHost',
-            message: 'What is the host of your project?'
+            message: 'What is the (local, generally) hostname of your project?'
         }];
 
         this.prompt(prompts, function (err, props) {
@@ -82,6 +82,7 @@ AppGenerator.prototype.bowerJSON = function componentJSON() {
 
 AppGenerator.prototype.structure = function structure() {
       this.mkdir('public/css');
+      this.mkdir('public/css/fonts');
       this.mkdir('public/img');
       this.mkdir('public/scss');
 };
